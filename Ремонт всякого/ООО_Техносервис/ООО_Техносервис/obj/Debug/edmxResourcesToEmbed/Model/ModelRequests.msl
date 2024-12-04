@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище NameSpaseRequestsContainer" CdmEntityContainer="RequestEntities">
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="NameSpaseRequests.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Priority">
+      <EntityTypeMapping TypeName="NameSpaseRequests.Priority">
+        <MappingFragment StoreEntitySet="Priority">
+          <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+          <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Problem">
+      <EntityTypeMapping TypeName="NameSpaseRequests.Problem">
+        <MappingFragment StoreEntitySet="Problem">
+          <ScalarProperty Name="ProblemId" ColumnName="ProblemId" />
+          <ScalarProperty Name="ProblemName" ColumnName="ProblemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Request">
+      <EntityTypeMapping TypeName="NameSpaseRequests.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="RequestEquipmentId" ColumnName="RequestEquipmentId" />
+          <ScalarProperty Name="RequestProblemId" ColumnName="RequestProblemId" />
+          <ScalarProperty Name="RequestUserId" ColumnName="RequestUserId" />
+          <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+          <ScalarProperty Name="RequestStatusId" ColumnName="RequestStatusId" />
+          <ScalarProperty Name="RequestMasterId" ColumnName="RequestMasterId" />
+          <ScalarProperty Name="RequestTime" ColumnName="RequestTime" />
+          <ScalarProperty Name="RequestPriorityId" ColumnName="RequestPriorityId" />
+          <ScalarProperty Name="RequestStageId" ColumnName="RequestStageId" />
+          <ScalarProperty Name="RequestComment" ColumnName="RequestComment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="NameSpaseRequests.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stage">
+      <EntityTypeMapping TypeName="NameSpaseRequests.Stage">
+        <MappingFragment StoreEntitySet="Stage">
+          <ScalarProperty Name="StageId" ColumnName="StageId" />
+          <ScalarProperty Name="StageName" ColumnName="StageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="NameSpaseRequests.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="NameSpaseRequests.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+          <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetInfoRequestFromMaster" FunctionName="Хранилище NameSpaseRequests.GetInfoRequestFromMaster">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NameSpaseRequests.GetInfoRequestFromMaster_Result">
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="RequestEquipmentId" ColumnName="RequestEquipmentId" />
+          <ScalarProperty Name="RequestProblemId" ColumnName="RequestProblemId" />
+          <ScalarProperty Name="RequestUserId" ColumnName="RequestUserId" />
+          <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+          <ScalarProperty Name="RequestStatusId" ColumnName="RequestStatusId" />
+          <ScalarProperty Name="RequestMasterId" ColumnName="RequestMasterId" />
+          <ScalarProperty Name="RequestTime" ColumnName="RequestTime" />
+          <ScalarProperty Name="RequestPriorityId" ColumnName="RequestPriorityId" />
+          <ScalarProperty Name="RequestStageId" ColumnName="RequestStageId" />
+          <ScalarProperty Name="RequestComment" ColumnName="RequestComment" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

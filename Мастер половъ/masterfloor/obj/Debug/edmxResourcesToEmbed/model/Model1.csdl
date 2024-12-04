@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MasterFloorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MaterialType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PercentageOfMaterialDefects" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypePartner" Type="Int32" Nullable="false" />
+    <Property Name="NameOfPartner" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Number" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="PartnerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rating" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TypePartner1" Relationship="Self.FK_Partner_TypePartner" FromRole="Partner" ToRole="TypePartner" />
+    <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Partner" FromRole="Partner" ToRole="Sales" />
+  </EntityType>
+  <EntityType Name="ProductImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductType" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article" Type="Int32" Nullable="false" />
+    <Property Name="MinimumCostForAPartner" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="ProductType1" Relationship="Self.FK_ProductImport_ProductType" FromRole="ProductImport" ToRole="ProductType" />
+    <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_ProductImport" FromRole="ProductImport" ToRole="Sales" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductTypeCoefficient" Type="Double" Nullable="false" />
+    <NavigationProperty Name="ProductImport" Relationship="Self.FK_ProductImport_ProductType" FromRole="ProductType" ToRole="ProductImport" />
+  </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product" Type="Int32" Nullable="false" />
+    <Property Name="Partner" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="DateOfSale" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Partner1" Relationship="Self.FK_Sales_Partner" FromRole="Sales" ToRole="Partner" />
+    <NavigationProperty Name="ProductImport" Relationship="Self.FK_Sales_ProductImport" FromRole="Sales" ToRole="ProductImport" />
+  </EntityType>
+  <EntityType Name="TypePartner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypePartner1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Partner" Relationship="Self.FK_Partner_TypePartner" FromRole="TypePartner" ToRole="Partner" />
+  </EntityType>
+  <Association Name="FK_Partner_TypePartner">
+    <End Role="TypePartner" Type="Self.TypePartner" Multiplicity="1" />
+    <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypePartner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Partner">
+        <PropertyRef Name="TypePartner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sales_Partner">
+    <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="Partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductImport_ProductType">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImport">
+        <PropertyRef Name="ProductType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sales_ProductImport">
+    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductImport">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MasterFloorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MaterialType" EntityType="Self.MaterialType" />
+    <EntitySet Name="Partner" EntityType="Self.Partner" />
+    <EntitySet Name="ProductImport" EntityType="Self.ProductImport" />
+    <EntitySet Name="ProductType" EntityType="Self.ProductType" />
+    <EntitySet Name="Sales" EntityType="Self.Sales" />
+    <EntitySet Name="TypePartner" EntityType="Self.TypePartner" />
+    <AssociationSet Name="FK_Partner_TypePartner" Association="Self.FK_Partner_TypePartner">
+      <End Role="TypePartner" EntitySet="TypePartner" />
+      <End Role="Partner" EntitySet="Partner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_Partner" Association="Self.FK_Sales_Partner">
+      <End Role="Partner" EntitySet="Partner" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductImport_ProductType" Association="Self.FK_ProductImport_ProductType">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="ProductImport" EntitySet="ProductImport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_ProductImport" Association="Self.FK_Sales_ProductImport">
+      <End Role="ProductImport" EntitySet="ProductImport" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

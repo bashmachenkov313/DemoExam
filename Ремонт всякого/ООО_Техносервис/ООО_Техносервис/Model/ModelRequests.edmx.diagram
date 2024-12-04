@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="092fa523b72f4d6dbe505d6a24801902" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="NameSpaseRequests.Equipment" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameSpaseRequests.Priority" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameSpaseRequests.Problem" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameSpaseRequests.Request" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameSpaseRequests.Role" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameSpaseRequests.Stage" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameSpaseRequests.Status" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameSpaseRequests.User" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="NameSpaseRequests.FK_Request_Equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="NameSpaseRequests.FK_Request_Priority" ManuallyRouted="false" />
+        <AssociationConnector Association="NameSpaseRequests.FK_Request_Problem" ManuallyRouted="false" />
+        <AssociationConnector Association="NameSpaseRequests.FK_Request_Master" ManuallyRouted="false" />
+        <AssociationConnector Association="NameSpaseRequests.FK_Request_Stage" ManuallyRouted="false" />
+        <AssociationConnector Association="NameSpaseRequests.FK_Request_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="NameSpaseRequests.FK_Request_User" ManuallyRouted="false" />
+        <AssociationConnector Association="NameSpaseRequests.FK_User_Role1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
